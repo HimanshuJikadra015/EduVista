@@ -71,7 +71,16 @@ export const editCourse = catchAsyncError(
 export const getSingleCourse = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const course = await courseModel.findById(req.params.id);
+      const course = await courseModel
+        .findById(req.params.id)
+        .select(
+          "-courseData.videoUrl -courseData.suggestion -courseData.questions -courseData.links"
+        );
+
+      res.status(200).json({
+        success: true,
+        course,
+      });
     } catch (error: any) {
       return next(new errorHandler(error.message, 500));
     }
