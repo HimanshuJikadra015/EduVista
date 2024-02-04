@@ -14,7 +14,7 @@ import {
   sendToken,
 } from "../utils/jwt";
 import { redis } from "../utils/redis";
-import { getUserById } from "../services/user.service";
+import { getAllUsersService, getUserById } from "../services/user.service";
 import cloudinary from "cloudinary";
 
 // register user
@@ -73,6 +73,7 @@ interface IActivationToken {
   token: string;
   activationCode: string;
 }
+
 export const createActivationToken = (user: any): IActivationToken => {
   const activationCode = Math.floor(1000 + Math.random() * 9000).toString();
   const token = jwt.sign(
@@ -403,6 +404,17 @@ export const updateProfilePicture = catchAsyncError(
       });
     } catch (error: any) {
       return next(new errorHandler(error.message, 400));
+    }
+  }
+);
+
+// get All Users (only for admin)
+export const getAllUsers = catchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      getAllUsersService(res);
+    } catch (error: any) {
+      next(new errorHandler(error.message, 500));
     }
   }
 );
