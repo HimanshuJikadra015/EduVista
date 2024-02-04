@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { catchAsyncError } from "../middleware/catchAsyncErrors";
 import errorHandler from "../utils/errorHandler";
 import cloudinary from "cloudinary";
-import { createCourse } from "../services/course.service";
+import { createCourse, getAllCoursesService } from "../services/course.service";
 import { url } from "inspector";
 import courseModel from "../models/course.model";
 import { redis } from "../utils/redis";
@@ -431,6 +431,17 @@ export const addReplyToReview = catchAsyncError(
       });
     } catch (error: any) {
       return next(new errorHandler(error.message, 500));
+    }
+  }
+);
+
+// get All Courses (only for admin)
+export const getAllCoursesAdmin = catchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      getAllCoursesService(res);
+    } catch (error: any) {
+      next(new errorHandler(error.message, 500));
     }
   }
 );
