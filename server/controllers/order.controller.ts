@@ -9,7 +9,7 @@ import path from "path";
 import ejs, { name } from "ejs";
 import sendMail from "../utils/sendMail";
 import notificationModel from "../models/notification.model";
-import { newOrder } from "../services/order.service";
+import { getAllOrdersService, newOrder } from "../services/order.service";
 
 // create order
 export const createOrder = catchAsyncError(
@@ -87,6 +87,17 @@ export const createOrder = catchAsyncError(
       newOrder(data, res, next);
     } catch (error: any) {
       return next(new errorHandler(error.message, 500));
+    }
+  }
+);
+
+// get All Orders (only for admin)
+export const getAllOrders = catchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      getAllOrdersService(res);
+    } catch (error: any) {
+      next(new errorHandler(error.message, 500));
     }
   }
 );
