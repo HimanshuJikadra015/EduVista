@@ -14,7 +14,11 @@ import {
   sendToken,
 } from "../utils/jwt";
 import { redis } from "../utils/redis";
-import { getAllUsersService, getUserById } from "../services/user.service";
+import {
+  getAllUsersService,
+  getUserById,
+  updateUserRoleService,
+} from "../services/user.service";
 import cloudinary from "cloudinary";
 
 // register user
@@ -414,7 +418,19 @@ export const getAllUsers = catchAsyncError(
     try {
       getAllUsersService(res);
     } catch (error: any) {
-      next(new errorHandler(error.message, 500));
+      next(new errorHandler(error.message, 400));
+    }
+  }
+);
+
+// update user role (only for admin)
+export const updateUserRole = catchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id, role } = req.body;
+      updateUserRoleService(res, id, role);
+    } catch (error: any) {
+      next(new errorHandler(error.message, 400));
     }
   }
 );
