@@ -1,15 +1,15 @@
-import { Document, Model, Schema, model } from "mongoose";
+import { Document, Schema, model } from "mongoose";
 
-interface faqItem extends Document {
+export interface faqItem extends Document {
   question: string;
   answer: string;
 }
 
-interface category extends Document {
+export interface category extends Document {
   title: string;
 }
 
-interface bannerImage extends Document {
+export interface bannerImage extends Document {
   public_id: string;
   url: string;
 }
@@ -19,7 +19,7 @@ interface layout extends Document {
   faq: faqItem[];
   categories: category[];
   banner: {
-    images: bannerImage;
+    image: bannerImage;
     title: string;
     subTitle: string;
   };
