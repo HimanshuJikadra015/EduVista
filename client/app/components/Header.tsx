@@ -4,14 +4,18 @@ import React, { FC, useState } from "react";
 import NavItems from "../utils/NavItems";
 import { ThemeSwitcher } from "../utils/ThemeSwitcher";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
+import CustomModal from "../utils/CustomModal";
+import Login from "../components/Auth/Login";
 
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
   activeItem: number;
+  setRoute: (route: string) => void;
+  route: string;
 };
 
-const Header: FC<Props> = ({ activeItem, setOpen }) => {
+const Header: FC<Props> = ({ activeItem, setOpen, open, route, setRoute }) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -88,12 +92,25 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
               <br />
               <br />
               <p className="text-[16px] px-2 pl-5 text-black dark:text-white">
-                Copyright © 2024 EduVista 
+                Copyright © 2024 EduVista
               </p>
             </div>
           </div>
         )}
       </div>
+      {route === "Login" && (
+        <>
+          {open && (
+            <CustomModal
+              open={open}
+              setOpen={setOpen}
+              setRoute={setRoute}
+              activeItem={activeItem}
+              component={Login}
+            />
+          )}
+        </>
+      )}
     </div>
   );
 };
