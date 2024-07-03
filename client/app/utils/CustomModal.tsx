@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Modal, Box } from "@mui/material";
+import { Global } from "@emotion/react";
 
 type Props = {
   open: boolean;
@@ -17,6 +18,15 @@ const CustomModal: FC<Props> = ({
 }) => {
   return (
     <div>
+      {open && (
+        <Global
+          styles={{
+            body: {
+              overflow: "auto !important",
+            },
+          }}
+        />
+      )}
       <Modal
         open={open}
         onClose={() => setOpen(false)}
