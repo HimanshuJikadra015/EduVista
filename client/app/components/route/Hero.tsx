@@ -8,11 +8,11 @@ type Props = {};
 const Hero: FC<Props> = (props) => {
   return (
     <div className="w-full 1000px:flex items-center">
-      <div className="absolute top-[100px] 1000px:top-[unset] 1500px:h-[700px] 1500px:w-[700px] 1100px:-h[600px] 1100px:-w[600px] h-[50vh] left-5 w-[50vh] hero_animation rounded-[50%] 1100px:left-8 1500px:left-14"></div>
+      <div className="absolute top-[100px] 1000px:top-[unset] 1500px:h-[700px] 1500px:w-[700px] 1100px:h-[600px] 1100px:w-[600px] h-[50vh] left-5 w-[50vh] hero_animation rounded-[50%] 1100px:left-8 1500px:left-14"></div>
       <div className="1000px:w-[40%] flex 1000px:min-h-screen items-center justify-end pt-[70px] 10000px:pt-[0] z-10">
         <Image
           src={require("../../../public/assets/banner-img-1.png")}
-          alt=""  
+          alt=""
           priority
           className="object-contain 1100px:max-w-[90%] w-[90%] 1500px:max-w-[85%] h-[auto] z-10"
         />
@@ -34,6 +34,8 @@ const Hero: FC<Props> = (props) => {
             type="search"
             placeholder="Search for Courses..."
             className="bg-transparent border dark:border-none dark:bg-[#575757] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 w-full h-full outline-none text-[#0000004e] dark:text-[#ffffffe6] text-[20px] font-[500] font-Josefin"
+            id="courseSearch"
+            name="courseSearch"
           />
           <div className="absolute flex items-center justify-center w-[50px] cursor-pointer h-[50px] right-0 top-0 bg-[#39c1f3] rounded-r-[5px]">
             <BiSearch className="text-white" size={30} />
