@@ -87,12 +87,12 @@ const Login: FC<Props> = ({ setRoute }) => {
               onClick={() => setShow(false)}
             />
           )}
-          {errors.password && touched.password && (
-            <span className="text-red-500 pt-2 block">{errors.password}</span>
-          )}
         </div>
+        {errors.password && touched.password && (
+          <span className="text-red-500 pt-2 block">{errors.password}</span>
+        )}
         <div className="w-full mt-5">
-          <input type="submit" value="login" className={`${styles.button}`} />
+          <input type="submit" value="Login" className={`${styles.button}`} />
         </div>
         <br />
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
@@ -106,9 +106,9 @@ const Login: FC<Props> = ({ setRoute }) => {
           Not have any account?{" "}
           <span
             className="text-[#2190ff] pl-1 cursor-pointer"
-            onClick={() => setRoute("Sign-up")}
+            onClick={() => setRoute("Sign-Up")}
           >
-            Sign up
+            Sign Up
           </span>
         </h5>
         <br />
