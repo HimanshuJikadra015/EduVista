@@ -54,7 +54,7 @@ export const registrationUser = catchAsyncError(
       try {
         await sendMail({
           email: user.email,
-          subject: "EduVista account activation",
+          subject: "EduVista Account Activation",
           template: "activation-mail.ejs",
           data,
         });
