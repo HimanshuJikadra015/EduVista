@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Modal, Box } from "@mui/material";
-import { Global } from "@emotion/react";
+// import { Global } from "@emotion/react";
 
 type Props = {
   open: boolean;
@@ -18,7 +18,7 @@ const CustomModal: FC<Props> = ({
 }) => {
   return (
     <div>
-      {open && (
+      {/* {open && (
         <Global
           styles={{
             body: {
@@ -26,7 +26,7 @@ const CustomModal: FC<Props> = ({
             },
           }}
         />
-      )}
+      )} */}
       <Modal
         open={open}
         onClose={() => setOpen(false)}
