@@ -48,7 +48,7 @@ const Item: FC<itemProps> = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const Sidebar = () => {
+const AdminSidebar = () => {
   const { user } = useSelector((state: any) => state.auth);
   const [logout, setlogout] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -121,8 +121,8 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Link href="/" className="block">
-                  <h3 className="text-[25px] font-Poppins uppercase dark:text-white text-black">
-                    ELearning
+                  <h3 className="text-[25px] font-Poppins dark:text-white text-black font-[500]">
+                    EduVista
                   </h3>
                 </Link>
                 <IconButton
@@ -322,4 +322,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;
